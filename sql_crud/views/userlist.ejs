@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>User List</h1>
+        <table class="table table-bordered">
+            <thead class="thead-info">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(function(user) { %>
+                    <tr>
+                        <td><%= user.id %></td>
+                        <td><%= user.name %></td>
+                        <td><%= user.address %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.phone %></td>
+                        <td>
+
+                            <div class="d-flex">
+                                <a href="/users/edit/<%= user.id %>" class="btn btn-info btn-m mr-2" style="border-radius: 17px;" >Edit</a>
+                                <form action="/users/delete/<%= user.id %>" method="POST" style="display:inline;">
+                                    <button type="submit" class="btn btn-dark btn-m" style="border-radius: 17px;">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <a href="/users/add" class="btn btn-success mt-3">Add New User</a>
+    </div>
+</body>
+</html>
